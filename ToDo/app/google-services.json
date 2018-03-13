@@ -1,0 +1,187 @@
+{
+  "project_info": {
+    "project_number": "858518893139",
+    "firebase_url": "https://todoapp-ef790.firebaseio.com",
+    "project_id": "todoapp-ef790",
+    "storage_bucket": "todoapp-ef790.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858518893139:android:3cc83b4e3128f81b",
+        "android_client_info": {
+          "package_name": "com.example.ghulam.todoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858518893139-mjbvj677qj2dc8hje87pnljjhkvf9fam.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghulam.todoapp",
+            "certificate_hash": "1c6710ed86e00a6e3e371897195579fdeb1240cf"
+          }
+        },
+        {
+          "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsJHQ34U2OStc-oU1aP4sMe0j4OFruI78"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858518893139:android:88057039b60ddeee",
+        "android_client_info": {
+          "package_name": "com.example.ghulam.todorv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858518893139-q3csj5a3okqudddeh5s9k5f9aqqi6psg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghulam.todorv",
+            "certificate_hash": "1c6710ed86e00a6e3e371897195579fdeb1240cf"
+          }
+        },
+        {
+          "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsJHQ34U2OStc-oU1aP4sMe0j4OFruI78"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858518893139:android:57c9dea77272624f",
+        "android_client_info": {
+          "package_name": "com.example.ghulam.simpletodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858518893139-bcemu6dv79it8itg0m3hlgvdb1ll75la.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghulam.simpletodo",
+            "certificate_hash": "1c6710ed86e00a6e3e371897195579fdeb1240cf"
+          }
+        },
+        {
+          "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsJHQ34U2OStc-oU1aP4sMe0j4OFruI78"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858518893139:android:f80711f7a391d1b9",
+        "android_client_info": {
+          "package_name": "com.example.ghulam.myapplicationtodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858518893139-ebeionpgqh7rt7ktssd2eepnvu8nl1no.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghulam.myapplicationtodo",
+            "certificate_hash": "1c6710ed86e00a6e3e371897195579fdeb1240cf"
+          }
+        },
+        {
+          "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsJHQ34U2OStc-oU1aP4sMe0j4OFruI78"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858518893139-3fdoc28r8o3fqs5e3eti3tjole6q8ll2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

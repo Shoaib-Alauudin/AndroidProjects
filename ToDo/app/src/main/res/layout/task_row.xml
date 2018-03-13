@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/taskName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/mar_10"
+        android:text="@string/taskName"
+        android:textColor="#000000"
+        android:textSize="@dimen/taskName_textSize_20"/>
+
+
+    <TextView
+        android:id="@+id/taskTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/mar_10"
+        android:text="@string/taskTime"
+        android:textSize="@dimen/taskTime_textSize_15"/>
+
+
+
+
+</LinearLayout>
