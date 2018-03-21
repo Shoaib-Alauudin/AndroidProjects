@@ -2,16 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.ghulam.myapplicationtodo.MainActivity">
-    <item
-        android:id="@+id/action_signout"
-        android:orderInCategory="100"
-        android:title="@string/SignOut"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_signin"
-        android:title="@string/SignIn"
-        android:icon="@android:drawable/ic_input_add"
-        app:showAsAction="never" />
+
 
     <item
         android:id="@+id/addTask"

@@ -59,6 +59,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
 
                 Intent singleActivity = new Intent(v.getContext(), singleTask.class);
                 singleActivity.putExtra("key", Key);
+                singleActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(singleActivity);
             }
         });

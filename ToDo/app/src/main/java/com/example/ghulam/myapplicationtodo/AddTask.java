@@ -52,7 +52,7 @@ public class AddTask extends AppCompatActivity {
 
         if(name.isEmpty()){
             Toast.makeText(this,"Please Enter Some text", Toast.LENGTH_LONG).show();
-            Toast.makeText(this,"Psuh KEy"+key, Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Push KEy"+key, Toast.LENGTH_LONG).show();
 
             return;
         }

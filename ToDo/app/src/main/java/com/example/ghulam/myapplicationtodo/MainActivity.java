@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
     TextView bannerDay, bannerDate;
     private ArrayList<Task> allTask;
     private Toolbar toolbar;
-    RecyclerView.Adapter adapter;
+    RecyclerViewAdapter adapter;
 
 
     @Override
@@ -148,17 +148,17 @@ public class MainActivity extends AppCompatActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_signout) {
-            return true;
-        }
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_signout) {
+//            return true;
+//        }
 //        else if(id == R.id.action_signin){
 //            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
 //            startActivity(intent);
 //
 //        }
 
-        else if(id == R.id.addTask){
+       if(id == R.id.addTask){
             Intent intent = new Intent(MainActivity.this, AddTask.class);
             startActivity(intent);
 
