@@ -1,0 +1,62 @@
+package com.example.ghulam.campussystem.CompanyLogin;
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.ghulam.campussystem.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class StudentDetailActivity extends AppCompatActivity {
+
+    private ImageView studentImage;
+    private TextView studentName, studentEducation,studentContactNo;
+    String userID;
+
+    private DatabaseReference mDatabase;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_student_detail);
+
+        userID = getIntent().getExtras().getString("userID");
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().
+                child("Campus System").child("Student");
+
+        studentImage = (ImageView) findViewById(R.id.studentImage);
+        studentName = (TextView) findViewById(R.id.studentName);
+        studentEducation = (TextView) findViewById(R.id.studentQualification);
+        studentContactNo = (TextView) findViewById(R.id.studentContactNumber);
+
+        mDatabase.child(userID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String Name, Qualification,Contact, Image;
+                Name = (String)dataSnapshot.child("studentName").getValue();
+                Qualification = (String)dataSnapshot.child("qualification").getValue();
+                Contact = (String)dataSnapshot.child("contact").getValue();
+                Image = (String)dataSnapshot.child("imageURL").getValue();
+
+                studentName.setText(Name);
+                studentEducation.setText(Qualification);
+                studentContactNo.setText(Contact);
+//                studentImage.setImageResource(Image);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padd_16"
+    tools:context="com.example.ghulam.campussystem.CompanyLogin.StudentDetailActivity">
+
+    <ImageView
+        android:id="@+id/studentImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:src="@drawable/studenticon"
+        android:background="@drawable/rounded_button_transparent"/>
+
+    <TextView
+        android:id="@+id/studentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".2"
+        android:gravity="center"
+        android:text="Student Name" />
+
+
+    <TextView
+        android:id="@+id/studentQualification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:text="Student Qualification" />
+
+    <TextView
+        android:id="@+id/studentContactNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:text="0333 1992995"
+        android:gravity="center"/>
+
+</LinearLayout>

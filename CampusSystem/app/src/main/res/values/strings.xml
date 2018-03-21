@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Campus System</string>
+    <string name="admin">ADMIN</string>
+    <string name="companies">COMPANIES</string>
+    <string name="student">STUDENT</string>
+    <string name="userProfile">Profile</string>
+    <string name="loginSuccessful">Login Successful</string>
+    <string name="userReg">User Register Successful</string>
+    <string name="CompanyList">Job Offer Companies</string>
+    <string name="companyName">36sp</string>
+
+
+    <string name="select">Please Select</string>
+    <string-array name="domain">
+        <item>Company</item>
+        <item>Student</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
