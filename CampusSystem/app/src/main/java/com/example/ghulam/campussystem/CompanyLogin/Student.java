@@ -5,6 +5,85 @@ package com.example.ghulam.campussystem.CompanyLogin;
  */
 
 public class Student {
+    private String studentName, studentContactNumber, studentCV, studentImage;
+    private String email, password ,eduaction, userID;
+
+    public Student() {
+    }
+
+    public Student(String studentName,String userID, String email, String password) {
+        this.studentName = studentName;
+        this.email = email;
+        this.password = password;
+        this.userID = userID;
+    }
+
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public void setStudentContactNumber(String studentContactNumber) {
+        this.studentContactNumber = studentContactNumber;
+    }
+
+    public void setStudentCV(String studentCV) {
+        this.studentCV = studentCV;
+    }
+
+    public void setStudentImage(String studentImage) {
+        this.studentImage = studentImage;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public String getStudentContactNumber() {
+        return studentContactNumber;
+    }
+
+    public String getStudentCV() {
+        return studentCV;
+    }
+
+    public String getStudentImage() {
+        return studentImage;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEduaction(String eduaction) {
+        this.eduaction = eduaction;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEduaction() {
+        return eduaction;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    /*
     private String studentName,studentEmail, userId, userPassword, studentContactNumber, studentImage , StudentEdu;
 
 
@@ -80,4 +159,5 @@ public class Student {
     public String getStudentEdu() {
         return StudentEdu;
     }
+    * */
 }

@@ -47,8 +47,8 @@ public class RecyclerViewAdapterStudents extends RecyclerView.Adapter<RecyclerVi
 
 
         studentName = students.get(position).getStudentName();
-        studentQualification = students.get(position).getStudentEdu();
-        userID = students.get(position).getUserId();
+        studentQualification = students.get(position).getEduaction();
+        userID = students.get(position).getUserID();
 
 
         holder.studentName.setText(studentName);

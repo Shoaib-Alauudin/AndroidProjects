@@ -31,7 +31,7 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/padd_16"
+            android:layout_margin="20dp"
             android:background="@drawable/icon_camera"
             android:scaleType="centerCrop" />
 
@@ -49,48 +49,27 @@
         android:id="@+id/editTextDisplayName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padd_16"
-        android:layout_marginRight="@dimen/padd_16"
+        android:paddingLeft="@dimen/padd_16"
+        android:paddingRight="@dimen/padd_16"
         android:layout_marginBottom="@dimen/padd_16"
         android:hint="Enter Display Name" />
 
-    <EditText
-        android:id="@+id/editTextEducation"
+    <TextView
+        android:id="@+id/textViewVerified"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padd_16"
-        android:layout_marginRight="@dimen/padd_16"
+        android:paddingLeft="@dimen/padd_16"
+        android:paddingRight="@dimen/padd_16"
         android:layout_marginBottom="@dimen/padd_16"
-        android:hint="Education"
-        android:inputType="textAutoCorrect|textAutoComplete|textLongMessage"
-        android:maxLines="1"/>
-
-
-    <EditText
-        android:id="@+id/editTextContact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padd_16"
-        android:layout_marginRight="@dimen/padd_16"
-        android:layout_marginBottom="@dimen/padd_16"
-        android:inputType="number"
-        android:hint="Contact Number" />
-
-    <!--<TextView-->
-        <!--android:id="@+id/textViewVerified"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingLeft="@dimen/padd_16"-->
-        <!--android:paddingRight="@dimen/padd_16"-->
-        <!--android:layout_marginBottom="@dimen/padd_16"-->
-        <!--android:text="Verified"-->
-        <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />-->
+        android:text="Verified"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
         android:background="@drawable/rounded_button_solid"
         android:paddingLeft="55dp"
         android:paddingRight="55dp"

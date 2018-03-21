@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.ghulam.campussystem.CompanyLogin.Student;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -64,8 +63,8 @@ public class ProfileActivity extends AppCompatActivity {
 
 //      SignIn UserId
 //        userID = getIntent().getExtras().getString("userID");
-        category = getIntent().getExtras().getString("parentNode");
-        userPassword = getIntent().getExtras().getString("password");
+//        category = getIntent().getExtras().getString("parentNode");
+//        userPassword = getIntent().getExtras().getString("password");
 
         Toast.makeText(getApplicationContext(),category, Toast.LENGTH_LONG).show();
 
@@ -80,11 +79,11 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         editTextName =  findViewById(R.id.editTextDisplayName);
-        editTextContact =  findViewById(R.id.editTextContact);
-        editTextEducation =  findViewById(R.id.editTextEducation);
+//        editTextContact =  findViewById(R.id.editTextContact);
+//        editTextEducation =  findViewById(R.id.editTextEducation);
         imageView =  findViewById(R.id.imageView);
         progressBar =  findViewById(R.id.progressbar);
-//        textView =  findViewById(R.id.textViewVerified);
+        textView =  findViewById(R.id.textViewVerified);
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -162,33 +161,34 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void saveUserInformation(){
 
-        String Name = editTextName.getText().toString();
-        String Education = editTextEducation.getText().toString();
-        String Contact = editTextContact.getText().toString();
+        String displayName = editTextName.getText().toString();
+//        String Education = editTextEducation.getText().toString();
+//        String Contact = editTextContact.getText().toString();
 
-        if (Name.isEmpty()){
+        if (displayName.isEmpty()){
             editTextName.setError("Name Required");
             editTextName.requestFocus();
             return;
         }
 
-        if (Education.isEmpty()){
-            editTextEducation.setError("Qualification Required");
+        /*if (Education.isEmpty()){
+            editTextEducation.setError("Name Required");
             editTextEducation.requestFocus();
             return;
         }
 
         if (Contact.isEmpty()){
-            editTextContact.setError("Contact Required");
+            editTextContact.setError("Name Required");
             editTextContact.requestFocus();
             return;
-        }
+        }*/
+
 
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null && profileImageUrl != null){
             UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(Name)
+                    .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profileImageUrl))
                     .build();
 
@@ -204,22 +204,18 @@ public class ProfileActivity extends AppCompatActivity {
 
         }
 
-        if (category.matches("Student")){
+        /*if (category.matches("Student")){
 
             myRef
                     .child(category)
-                    .child(String.valueOf(new Student(Name, user.getEmail(),user.getUid(),userPassword,Contact,user.getPhotoUrl().toString(),Education)));
-
-            /*Student(String studentName, String studentEmail, String userId,
-             String userPassword, String studentContactNumber, String studentImage, String studentEdu)*/
+                    .child(new Student(editTextName,user.);
         }
         else
-            return;
-            /*myRef
+            myRef
                     .child(category)
-                    .child(new Company(displayName,user.getUid(),user.getEmail(),userPassword,user.getPhotoUrl()));*/
+                    .child(new Company(displayName,user.getUid(),user.getEmail(),userPassword,user.getPhotoUrl()));
 
-
+*/
     }
 
 
