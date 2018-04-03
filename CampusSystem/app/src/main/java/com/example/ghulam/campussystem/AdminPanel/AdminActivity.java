@@ -1,25 +1,78 @@
 package com.example.ghulam.campussystem.AdminPanel;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import com.example.ghulam.campussystem.CompanyLogin.StudentList;
+import com.example.ghulam.campussystem.FetchJobs.FetchJob;
+import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.R;
+import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
+import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
+
 
 public class AdminActivity extends AppCompatActivity {
-    private ViewPager viewPager;
 
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        viewPager = (ViewPager)findViewById(R.id.myViewPage);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        ArrayList<String> fragment = new ArrayList<>();
 
 
+    }
+    //  Menu activity
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.adminmenu, menu);
+
+        return true;
+    }
+
+
+    //  logOut button on Menu activity
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()){
+            case R.id.menuLogout:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                break;
+
+            case R.id.jobs:
+                Intent intent = new Intent(getApplicationContext(), FetchJob.class);
+                startActivity(intent);
+                break;
+
+            case R.id.students:
+                Intent student = new Intent(getApplicationContext(), StudentList.class);
+                startActivity(student);
+                break;
+
+
+            case R.id.companies:
+                Intent company = new Intent(getApplicationContext(), CompaniesList.class);
+                startActivity(company);
+                break;
+
+
+        }
+
+        return true;
     }
 }

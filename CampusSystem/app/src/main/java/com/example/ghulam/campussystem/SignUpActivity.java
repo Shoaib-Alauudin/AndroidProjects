@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     FirebaseUser user;
 
 //    SignUp Fields
-    private String name,email,password,confirmPassword;
+    private String name,email,password,confirmPassword,category;
 
 
     @Override
@@ -43,8 +43,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_up);
 
         mAuth = FirebaseAuth.getInstance();
-        myRef = FirebaseDatabase.getInstance().getReference().child("Campus System");
-
+        myRef = FirebaseDatabase.getInstance().getReference("Campus System");
 
 
         editTextEmail = (EditText)findViewById(R.id.editTextEmail);
@@ -53,7 +52,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         progressBar = (ProgressBar)findViewById(R.id.progressbar);
         editTextConfirmPassword = (EditText)findViewById(R.id.editTextConfirmPassword);
         selectSpinner = (Spinner) findViewById(R.id.spinner);
-
 
 
         findViewById(R.id.buttonSignUp).setOnClickListener(this);
@@ -75,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()){
 
             case R.id.textViewLogin:
-                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 break;
 
             case R.id.buttonSignUp:
@@ -90,6 +88,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         email =  editTextEmail.getText().toString().trim();
         password =  editTextPassword.getText().toString().trim();
         confirmPassword = editTextConfirmPassword.getText().toString().trim();
+        category = selectSpinner.getSelectedItem().toString();
+
 
 
 
@@ -140,34 +140,50 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     finish();
                     userProfile();
                     user = mAuth.getCurrentUser();
-                    String category = selectSpinner.getSelectedItem().toString();
 
-                    myRef.child(category).child(user.getUid())
-                            .setValue(new Student(name,user.getEmail(),user.getUid(),password));
                     if(category.equals("Company")){
                         myRef.child(category).child(user.getUid())
-                                .setValue(new Company(name,user.getEmail(),user.getUid(),password));
+                                .setValue(new Company(name,user.getEmail(),user.getUid(),password,category));
 
-                        /*Student(String studentName, String studentEmail, String userId, String userPassword)*/
+                        Intent intent = new Intent(SignUpActivity.this, CompanyProfile.class);
+//                        intent.putExtra("password",password);
+                        intent.putExtra("parentNode",category);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //Close all the open activity
+                        Toast.makeText(SignUpActivity.this,"User Register Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                        setEmpty();
+
+
+                       /* progressBar.setVisibility(View.GONE);
+                        startActivity(new Intent(SignUpActivity.this, StudentList.class));
+                        Toast.makeText(SignUpActivity.this,"User Register Successful", Toast.LENGTH_SHORT).show();
+                        setEmpty();*/
+
                     }
                     else
+                    {
                         myRef.child(category).child(user.getUid())
-                                .setValue(new Student(name,user.getEmail(),user.getUid(),password));
+                                .setValue(new Student(name,user.getUid(),user.getEmail(),password,category));
 
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(SignUpActivity.this,"User Register Successful", Toast.LENGTH_SHORT).show();
-                    setEmpty();
-                    Intent intent = new Intent(SignUpActivity.this, ProfileActivity.class);
-//                    intent.putExtra("userID",mAuth.getCurrentUser().getUid());
+                        Intent intent = new Intent(SignUpActivity.this, ProfileActivity.class);
+//                        intent.putExtra("password",password);
+                        intent.putExtra("parentNode",category);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //Close all the open activity
+                        Toast.makeText(SignUpActivity.this,"User Register Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                        setEmpty();
 
-                    intent.putExtra("password",password);
-                    intent.putExtra("parentNode",category);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //Close all the open activity
-                    startActivity(intent);
+
+                        /*progressBar.setVisibility(View.GONE);
+                        startActivity(new Intent(SignUpActivity.this, CompaniesList.class));
+                        Toast.makeText(SignUpActivity.this,"User Register Successful", Toast.LENGTH_SHORT).show();
+                        setEmpty();*/
+                    }
+
+
                 }
                 else{
                     progressBar.setVisibility(View.GONE);
-
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
 
                         Toast.makeText(getApplicationContext(),
@@ -192,7 +208,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         if (user!=null){
             UserProfileChangeRequest profileUpdates = new
                     UserProfileChangeRequest.Builder()
-                    .setDisplayName(editTextName.getText().toString().trim())
+                    .setDisplayName(category)
                     .build();
 
             user.updateProfile(profileUpdates).

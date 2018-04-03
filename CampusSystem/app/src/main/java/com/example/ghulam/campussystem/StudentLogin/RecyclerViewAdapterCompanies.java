@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.ghulam.campussystem.R;
 
 import java.util.ArrayList;
@@ -35,7 +36,8 @@ public class RecyclerViewAdapterCompanies extends RecyclerView.Adapter<RecyclerV
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = mInfalter.from(parent.getContext()).inflate(R.layout.company_job_row, parent, false);
+        View view = mInfalter.from(parent.getContext())
+                .inflate(R.layout.company_job_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -43,31 +45,23 @@ public class RecyclerViewAdapterCompanies extends RecyclerView.Adapter<RecyclerV
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        final String companyName,jobTitle, companyKey;
-        final int companyLogo;
-
-/*      final Company companyList = companies.get(position);
-        companyName = companyList.getCompanyName();
-        jobTitle = companyList.getCompanyOfferedJob();
-        companyLogo = companyList.getCompanyLogo();
-        companyKey = companyList.getcompanyKey();*/
+        final String companyName, userID, companyLogo;
 
         companyName = companies.get(position).getCompanyName();
-        jobTitle = companies.get(position).getCompanyOfferedJob();
-        companyLogo = companies.get(position).getCompanyLogo();
-        companyKey = companies.get(position).getUserID();
+        companyLogo = companies.get(position).getCompanyImage();
+        userID = companies.get(position).getUserID();
 
 
         holder.companyName.setText(companyName);
-        holder.jobTitle.setText(jobTitle);
-        holder.companyLogo.setImageResource(companyLogo);
+        Glide.with(context).load(companyLogo).into(holder.companyLogo);
+
         holder.companyDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Context context = v.getContext();
-                Intent companyJobDetail = new Intent(context,CompanyDetailActivity.class);
-                companyJobDetail.putExtra("key",companyKey);
-                context.startActivity(companyJobDetail);
+                Context context = v.getContext();
+                Intent companyDetailActivity = new Intent(context, CompanyDetailActivity.class);
+                companyDetailActivity.putExtra("userID", userID);
+                context.startActivity(companyDetailActivity);
             }
         });
     }
@@ -84,14 +78,14 @@ public class RecyclerViewAdapterCompanies extends RecyclerView.Adapter<RecyclerV
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView companyLogo, companyDetail;
-        private TextView jobTitle,companyName;
+        private TextView companyName;
 
         public ViewHolder(View view) {
             super(view);
-            companyLogo = (ImageView)view.findViewById(R.id.companyLogo);
-            jobTitle = (TextView)view.findViewById(R.id.jobTitle);
-            companyName = (TextView)view.findViewById(R.id.companyName);
-            companyDetail = (ImageView)view.findViewById(R.id.companyDetail);
+            companyLogo = (ImageView)view.findViewById(R.id.Logo);
+            companyDetail = (ImageView)view.findViewById(R.id.Detail);
+
+            companyName = (TextView)view.findViewById(R.id.Name);
 
 
         }

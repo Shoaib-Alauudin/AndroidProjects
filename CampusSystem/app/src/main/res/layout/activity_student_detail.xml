@@ -6,39 +6,120 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/padd_16"
+    android:gravity="center"
+    android:background="@drawable/rounded_button_transparent"
     tools:context="com.example.ghulam.campussystem.CompanyLogin.StudentDetailActivity">
 
     <ImageView
         android:id="@+id/studentImage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:src="@drawable/studenticon"
-        android:background="@drawable/rounded_button_transparent"/>
+        android:layout_weight="5"
+        android:src="@drawable/studenticon" />
 
     <TextView
         android:id="@+id/studentName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".2"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:text="@string/name"
         android:gravity="center"
-        android:text="Student Name" />
+        android:textStyle="bold|italic"/>
 
 
-    <TextView
-        android:id="@+id/studentQualification"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:gravity="center"
-        android:text="Student Qualification" />
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/studentContactNumber"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/padd_8"
+            >
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/education"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/contact"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/studentQualification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Qualification"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+            <TextView
+                android:id="@+id/studentEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+
+            <TextView
+                android:id="@+id/studentContactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0333 1992995"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/deleteBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:text="0333 1992995"
-        android:gravity="center"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Delete"
+        android:background="@drawable/rounded_button_solid"
+        android:layout_margin="@dimen/padd_16"
+        android:visibility="gone"/>
+
 
 </LinearLayout>

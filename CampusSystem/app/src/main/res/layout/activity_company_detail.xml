@@ -5,70 +5,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center|center_horizontal"
-    tools:context="com.example.ghulam.campussystem.StudentLogin.CompanyDetailActivity">
+    android:padding="@dimen/padd_16"
+    android:gravity="center"
+    tools:context="com.example.ghulam.campussystem.StudentLogin.CompanyDetailActivity"
+    android:background="@drawable/rounded_button_transparent">
 
     <ImageView
         android:id="@+id/companyLogo"
         android:layout_width="match_parent"
-        android:layout_height="222dp"
-        android:layout_gravity="center|center_horizontal"
-        android:layout_margin="@dimen/padd_16"
-        android:layout_weight="4"
-        android:background="@drawable/hp"
-        android:scaleType="centerCrop" />
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:src="@drawable/hp"
+        android:layout_margin="@dimen/padd_16" />
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="Company Name"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="7"
-        android:padding="@dimen/padd_16">
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/padd_8">
 
 
-        <TextView
-            android:id="@+id/companyName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:text="Company Name"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="@dimen/textSize"/>
-        <TextView
-            android:id="@+id/jobTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.02"
-            android:text="Job Title"
-            android:gravity="center"/>
-        <TextView
-            android:id="@+id/jobDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.02"
-            android:text="Job Description"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/companyDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.02"
-            android:text="Company Description"
-            android:gravity="center"/>
 
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="168dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0.056"
-            android:text="Apply"
-            android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:gravity="center|left"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Website"
+                android:gravity="center|left"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Contact"
+                android:gravity="left"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/companyEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:gravity="center|left"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+            <TextView
+                android:id="@+id/companyWebsite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Company Website"
+                android:gravity="center|left"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+
+            <TextView
+                android:id="@+id/companyContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Company Contact"
+                android:gravity="center|left"
+                android:layout_marginBottom="@dimen/padd_16"/>
+
+
+
+
+
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Delete"
+        android:background="@drawable/rounded_button_solid"
+        android:layout_margin="@dimen/padd_16"
+        android:visibility="gone"/>
+
 
 
 </LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="@dimen/padd_16"
+    tools:context="com.example.ghulam.campussystem.PostJobs">
+
+
+
+    <TextView
+        android:id="@+id/studentProfileTopText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Job"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/padd_16"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/studentProfileWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Be carefull information once added cant be changed . All fields are mandatory" />
+
+    <EditText
+        android:id="@+id/postJobTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="textCapWords|textAutoCorrect"
+        android:hint="Job title" />
+
+    <EditText
+        android:id="@+id/postJobSalary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Salary"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/postJobDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Short description"
+        android:inputType="textShortMessage"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:background="@drawable/rounded_button_solid"
+        android:id="@+id/postJobSubmitBtn"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

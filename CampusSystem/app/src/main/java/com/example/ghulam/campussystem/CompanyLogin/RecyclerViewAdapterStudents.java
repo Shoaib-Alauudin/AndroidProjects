@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ghulam.campussystem.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,7 +33,9 @@ public class RecyclerViewAdapterStudents extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInfalter.from(parent.getContext()).inflate(R.layout.student_info_row, parent, false);
+        View view = mInfalter.from(parent.getContext()).
+                inflate(R.layout.student_info_row, parent, false);
+
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -42,37 +43,37 @@ public class RecyclerViewAdapterStudents extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        final String studentName, studentQualification;
+        final String studentName, studentQualification, studentImage;
         final String userID;
 
-
         studentName = students.get(position).getStudentName();
-        studentQualification = students.get(position).getEduaction();
+        studentQualification = students.get(position).getEducation();
+        studentImage = students.get(position).getStudentImage();
         userID = students.get(position).getUserID();
 
 
         holder.studentName.setText(studentName);
         holder.studentQualification.setText(studentQualification);
-        Picasso.with(context).load(students.get(position).getStudentImage()).
-                resize(240, 120).into(holder.studentImage);
-/*        Glide.with(context).load(students.get(position).
-                getStudentImage()).into(holder.studentImage);*/
+/*        Picasso.with(context).load(students.get(position).getStudentImage()).
+                resize(240, 120).into(holder.studentImage);*/
+
+//        Glide.with(context).load(studentImage).into(holder.studentImage);
+
         holder.studentDetailImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Context context = v.getContext();
                 Intent studentDetailActivity = new Intent(context, StudentDetailActivity.class);
                 studentDetailActivity.putExtra("key",userID);
                 context.startActivity(studentDetailActivity);
             }
         });
 
-//        Glide.with(context).load()
-
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return students.size();
     }
 
     //  ViewHolder Class

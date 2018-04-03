@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.example.ghulam.campussystem.ProfileActivity">
+    tools:context="com.example.ghulam.campussystem.CompanyProfile">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,7 +31,7 @@
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/padd_8"
+            android:layout_margin="@dimen/padd_16"
             android:background="@drawable/icon_camera"
             android:scaleType="centerCrop" />
 
@@ -56,15 +56,18 @@
         android:inputType="textPersonName|textAutoComplete|textAutoCorrect"/>
 
     <EditText
-        android:id="@+id/editTextEducation"
+        android:id="@+id/editTextWebsite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padd_16"
         android:layout_marginRight="@dimen/padd_16"
         android:layout_marginBottom="@dimen/padd_16"
-        android:hint="Education"
+        android:hint="Website"
         android:maxLines="1"
         android:inputType="textAutoComplete|textAutoCorrect|textCapWords"/>
+
+
+    <!--android:id="@+id/textViewVerified"-->
 
     <EditText
         android:id="@+id/editTextContact"
@@ -72,27 +75,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padd_16"
         android:layout_marginRight="@dimen/padd_16"
-        android:layout_marginBottom="@dimen/padd_16"
         android:hint="Contact NUmber"
         android:inputType="numberDecimal"/>
 
-    <!--android:id="@+id/textViewVerified"-->
-
-    <EditText
-        android:id="@+id/editViewSkills"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/padd_16"
-        android:layout_marginRight="@dimen/padd_16"
-        android:maxLines="1"
-        android:hint="Skills"
-        android:inputType="textLongMessage"/>
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/padd_16"
+        android:layout_marginTop="25dp"
         android:background="@drawable/rounded_button_solid"
         android:paddingLeft="55dp"
         android:paddingRight="55dp"

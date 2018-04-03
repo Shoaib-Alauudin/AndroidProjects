@@ -19,10 +19,18 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".StudentLogin.CompaniesList" />
-        <activity android:name=".StudentLogin.CompanyDetailActivity" />
-        <activity android:name=".CompanyLogin.StudentDetailActivity" />
+        <activity
+            android:name=".StudentLogin.CompanyDetailActivity"
+            android:parentActivityName=".StudentLogin.CompaniesList" />
+        <activity
+            android:name=".CompanyLogin.StudentDetailActivity"
+            android:parentActivityName=".CompanyLogin.StudentList" />
         <activity android:name=".CompanyLogin.StudentList" />
-        <activity android:name=".AdminPanel.AdminActivity"></activity>
+        <activity android:name=".AdminPanel.AdminActivity" />
+        <activity android:name=".CompanyProfile" />
+        <activity android:name=".PostJobs" />
+        <activity android:name=".FetchJobs.FetchJob" />
+        <activity android:name=".FetchJobs.JobApply"></activity>
     </application>
 
 </manifest>

@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.ghulam.campussystem.FetchJobs.FetchJob;
 import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,20 +35,22 @@ public class CompaniesList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_companies_list);
 
-        setTitle("Job Offer Companies");
+        setTitle("Available Companies");
+
+        allCompanyList = new ArrayList();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = (RecyclerView)findViewById(R.id.companies_list);
+        recyclerView = findViewById(R.id.companies_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        allCompanyList = new ArrayList<Company>();
 
 //      Firebase Database Reference
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Tasks");
+        mDatabase = FirebaseDatabase.getInstance().getReference()
+                .child("Campus System").child("Company");
 
 
         mDatabase.addChildEventListener(new ChildEventListener() {
@@ -55,7 +58,8 @@ public class CompaniesList extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Company company = dataSnapshot.getValue(Company.class);
                 allCompanyList.add(company);
-                companyAdapter = new RecyclerViewAdapterCompanies(getApplicationContext(),allCompanyList);
+                companyAdapter = new RecyclerViewAdapterCompanies(CompaniesList.this,
+                        allCompanyList);
                 recyclerView.setAdapter(companyAdapter);
             }
 
@@ -100,8 +104,14 @@ public class CompaniesList extends AppCompatActivity {
                 finish();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 break;
-        }
 
+            case R.id.Jobs:
+
+                startActivity(new Intent(getApplicationContext(),FetchJob.class));
+                break;
+
+
+        }
         return true;
     }
 

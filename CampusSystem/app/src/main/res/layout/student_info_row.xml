@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="horizontal"
-    android:padding="@dimen/padd_16">
+    android:layout_margin="4dp"
+    android:background="@drawable/rounded_button_transparent">
 
     <ImageView
         android:id="@+id/studentImageView"
@@ -43,7 +44,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:src="@android:drawable/ic_dialog_info" />
+        android:layout_marginRight="@dimen/padd_8"
+        android:src="@android:drawable/ic_menu_info_details"
+        />
 
 </LinearLayout>

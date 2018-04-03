@@ -8,15 +8,18 @@
         android:title="Log Out" />
 
     <item
-        android:id="@+id/jobPost"
+        android:id="@+id/students"
         app:showAsAction="never"
-        android:title="Post New Job" />
+        android:title="Students" />
 
     <item
-        android:id="@+id/Jobs"
+        android:id="@+id/companies"
         app:showAsAction="never"
-        android:title="Available Jobs" />
+        android:title="Companies" />
 
-
+    <item
+        android:id="@+id/jobs"
+        app:showAsAction="never"
+        android:title="Job" />
 
 </menu>

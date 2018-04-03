@@ -14,12 +14,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.ghulam.campussystem.CompanyLogin.Student;
-import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
+import com.example.ghulam.campussystem.CompanyLogin.StudentList;
+import com.example.ghulam.campussystem.MainActivity;
+import com.example.ghulam.campussystem.R;
+import com.example.ghulam.campussystem.StudentLogin.Company;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,17 +37,16 @@ import com.google.firebase.storage.UploadTask;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ProfileActivity extends AppCompatActivity {
-
+public class CompanyProfile extends AppCompatActivity {
 
     private static final int CHOOSE_IMAGE = 101;
 
-    private TextView textView;
+
     private ImageView imageView;
-    private EditText editTextName,editTextContact,editTextEducation, editViewSkills;
+    private EditText editTextName,editTextWebsite,editTextContact;
     private android.support.v7.widget.Toolbar toolbar;
 
-//    Used for store a uri of the Image --> data.getData()
+    //    Used for store a uri of the Image --> data.getData()
     Uri uriProfileImage;
     ProgressBar progressBar;
 
@@ -60,22 +60,15 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-        setTitle(R.string.userProfile);
+        setContentView(R.layout.activity_company_profile);
 
         editTextName =  findViewById(R.id.editTextDisplayName);
+        editTextWebsite =  findViewById(R.id.editTextWebsite);
         editTextContact =  findViewById(R.id.editTextContact);
-        editTextEducation =  findViewById(R.id.editTextEducation);
+
         imageView =  findViewById(R.id.imageView);
         progressBar =  findViewById(R.id.progressbar);
-        editViewSkills =  findViewById(R.id.editViewSkills);
 
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-        mAuth = FirebaseAuth.getInstance();
 
 
 //      SignIn UserId
@@ -88,7 +81,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
+        mAuth = FirebaseAuth.getInstance();
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
 
@@ -107,8 +103,9 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 findViewById(R.id.buttonSave).setEnabled(false);
                 saveUserInformation();
-                Intent intent = new Intent(getApplicationContext(), CompaniesList.class);
+                Intent intent = new Intent(getApplicationContext(), StudentList.class);
                 startActivity(intent);
+
             }
         });
 
@@ -147,23 +144,6 @@ public class ProfileActivity extends AppCompatActivity {
                 editTextName.setText(user.getDisplayName());
             }
 
-            /*if (user.isEmailVerified()){
-                textView.setText("Email Verifired");
-            }else {
-                textView.setText("Email Not Verified (Click to verify)");
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(ProfileActivity.this,"Verification Email Sent",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                    }
-                });
-            }*/
-
         }
     }
 
@@ -171,9 +151,8 @@ public class ProfileActivity extends AppCompatActivity {
     private void saveUserInformation(){
 
         String displayName = editTextName.getText().toString().trim();
-        String Education = editTextEducation.getText().toString().trim();
+        String Website = editTextWebsite.getText().toString().trim();
         String Contact = editTextContact.getText().toString().trim();
-        String Skills = editViewSkills.getText().toString().trim();
 
         if (displayName.isEmpty()){
             editTextName.setError("Name Required");
@@ -181,11 +160,12 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        if (Education.isEmpty()){
-            editTextEducation.setError("Education Required");
-            editTextEducation.requestFocus();
+        if (Website.isEmpty()){
+            editTextWebsite.setError("Website Required");
+            editTextWebsite.requestFocus();
             return;
         }
+
 
         if (Contact.isEmpty()){
             editTextContact.setError("Contact Required");
@@ -193,41 +173,36 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        if (Skills.isEmpty()){
-            editViewSkills.setError("Skills Required");
-            editViewSkills.requestFocus();
-            return;
-        }
+
+
 
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user != null && profileImageUrl != null){
             UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                    .setDisplayName(displayName)
                     .setPhotoUri(Uri.parse(profileImageUrl))
                     .build();
 
             user.updateProfile(profileChangeRequest)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
-
-                        Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
         }
 
-
         myRef.child(category).child(user.getUid())
-                .setValue(new Student(displayName,user.getUid(),
-                        user.getEmail(),userPassword, category, Education,
-                        Contact, profileImageUrl, Skills));
-
-
+                .setValue(new Company(displayName,user.getEmail(),user.getUid(),
+                        userPassword,category,Website,profileImageUrl,
+                        Contact));
     }
+/*Company(String companyName, String companyEmail, String userID,
+String companyPassword, String category, String companyOfferedJob,
+String companySkillsRequired, String companyImage, String companyContactNumber)*/
 
 
     @Override
@@ -257,6 +232,8 @@ public class ProfileActivity extends AppCompatActivity {
     private void uploadImageToFirebaseStorage(){
         StorageReference profileImageRef = FirebaseStorage.getInstance().
                 getReference("profilepics/" + System.currentTimeMillis()+ ".jpg");
+
+        profileImageRef.delete();
 
         if (uriProfileImage != null){
             progressBar.setVisibility(View.VISIBLE);
@@ -288,7 +265,7 @@ public class ProfileActivity extends AppCompatActivity {
         return true;
     }
 
-//  logOut button on Menu activity
+    //  logOut button on Menu activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -303,3 +280,4 @@ public class ProfileActivity extends AppCompatActivity {
         return true;
     }
 }
+

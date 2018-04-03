@@ -5,119 +5,64 @@ package com.example.ghulam.campussystem.CompanyLogin;
  */
 
 public class Student {
-    private String studentName, studentContactNumber, studentCV, studentImage;
-    private String email, password ,eduaction, userID;
+    private String studentName, userID, studentEmail , studentPassword, category;
+    private String education, studentContactNumber, studentImage, studentSkills;
+
 
     public Student() {
     }
 
-    public Student(String studentName,String userID, String email, String password) {
+
+    public Student(String studentName, String userID, String studentEmail, String category) {
         this.studentName = studentName;
-        this.email = email;
-        this.password = password;
         this.userID = userID;
+        this.studentEmail = studentEmail;
+        this.category = category;
     }
 
+    public Student(String studentName, String userID, String studentEmail,String studentContactNumber,String studentSkills) {
+        this.studentName = studentName;
+        this.userID = userID;
+        this.studentEmail = studentEmail;
+        this.studentContactNumber = studentContactNumber;
+        this.studentSkills = studentSkills;
+    }
+    public Student(String studentName, String userID, String studentEmail, String studentPassword,
+                   String category, String education, String studentContactNumber,
+                   String studentImage, String studentSkills) {
+        this.studentName = studentName;
+        this.userID = userID;
+        this.studentEmail = studentEmail;
+        this.studentPassword = studentPassword;
+        this.category = category;
+        this.education = education;
+        this.studentContactNumber = studentContactNumber;
+        this.studentImage = studentImage;
+        this.studentSkills = studentSkills;
+    }
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
-    }
-
-    public void setStudentContactNumber(String studentContactNumber) {
-        this.studentContactNumber = studentContactNumber;
-    }
-
-    public void setStudentCV(String studentCV) {
-        this.studentCV = studentCV;
-    }
-
-    public void setStudentImage(String studentImage) {
-        this.studentImage = studentImage;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public String getStudentContactNumber() {
-        return studentContactNumber;
-    }
-
-    public String getStudentCV() {
-        return studentCV;
-    }
-
-    public String getStudentImage() {
-        return studentImage;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setEduaction(String eduaction) {
-        this.eduaction = eduaction;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEduaction() {
-        return eduaction;
     }
 
     public void setUserID(String userID) {
         this.userID = userID;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
-    /*
-    private String studentName,studentEmail, userId, userPassword, studentContactNumber, studentImage , StudentEdu;
-
-
-    public Student(String studentName, String studentEmail, String userId, String userPassword) {
-        this.studentName = studentName;
-        this.studentEmail = studentEmail;
-        this.userId = userId;
-        this.userPassword = userPassword;
-    }
-
-    public Student(String studentName, String studentEmail, String userId, String userPassword, String studentContactNumber, String studentImage, String studentEdu) {
-        this.studentName = studentName;
-        this.studentEmail = studentEmail;
-        this.userId = userId;
-        this.userPassword = userPassword;
-        this.studentContactNumber = studentContactNumber;
-        this.studentImage = studentImage;
-        StudentEdu = studentEdu;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
     public void setStudentEmail(String studentEmail) {
         this.studentEmail = studentEmail;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setStudentPassword(String studentPassword) {
+        this.studentPassword = studentPassword;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
     }
 
     public void setStudentContactNumber(String studentContactNumber) {
@@ -128,24 +73,32 @@ public class Student {
         this.studentImage = studentImage;
     }
 
-    public void setStudentEdu(String studentEdu) {
-        StudentEdu = studentEdu;
+    public void setStudentSkills(String studentSkills) {
+        this.studentSkills = studentSkills;
     }
 
     public String getStudentName() {
         return studentName;
     }
 
+    public String getUserID() {
+        return userID;
+    }
+
     public String getStudentEmail() {
         return studentEmail;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getStudentPassword() {
+        return studentPassword;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getCategory() {
+        return category;
+    }
+
+    public String getEducation() {
+        return education;
     }
 
     public String getStudentContactNumber() {
@@ -156,8 +109,7 @@ public class Student {
         return studentImage;
     }
 
-    public String getStudentEdu() {
-        return StudentEdu;
+    public String getStudentSkills() {
+        return studentSkills;
     }
-    * */
 }

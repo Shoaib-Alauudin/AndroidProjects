@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.ghulam.campussystem.MainActivity;
+import com.example.ghulam.campussystem.PostJobs;
 import com.example.ghulam.campussystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -33,9 +34,11 @@ public class StudentList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
+        setTitle("Available Students");
 
+//      allCompanyList = new ArrayList<Company>();
+        allStudentList = new ArrayList<Student>();
 
-        setTitle("Student List");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -45,13 +48,10 @@ public class StudentList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-//        allCompanyList = new ArrayList<Company>();
-        allStudentList = new ArrayList<Student>();
-
 //      Firebase Database Reference
         mDatabase = FirebaseDatabase.getInstance().getReference()
                 .child("Campus System").child("Student");
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -60,6 +60,7 @@ public class StudentList extends AppCompatActivity {
                 studentAdapter = new RecyclerViewAdapterStudents(StudentList.this,
                         allStudentList);
                 recyclerView.setAdapter(studentAdapter);
+
             }
 
             @Override
@@ -70,10 +71,6 @@ public class StudentList extends AppCompatActivity {
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                Student student = dataSnapshot.getValue(Student.class);
-//                int index = indexOf(student);
-                allStudentList.remove(student);
-                studentAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -86,6 +83,9 @@ public class StudentList extends AppCompatActivity {
 
             }
         });
+
+
+
     }
 
     //  Menu activity
@@ -98,6 +98,7 @@ public class StudentList extends AppCompatActivity {
         return true;
     }
 
+
     //  logOut button on Menu activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -106,6 +107,11 @@ public class StudentList extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                break;
+
+            case R.id.jobPost:
+                Intent intent = new Intent(StudentList.this, PostJobs.class);
+                startActivity(intent);
                 break;
         }
 
