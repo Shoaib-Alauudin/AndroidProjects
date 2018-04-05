@@ -50,22 +50,16 @@ public class FetchJob extends AppCompatActivity {
 
 
                 for(DataSnapshot node : dataSnapshot.getChildren()) {
-
                     for (DataSnapshot nodeChild:node.getChildren()){
 //                        Log.v("key",nodeChild.getKey());
                         JobsStructure jobsStructure = nodeChild.getValue(JobsStructure.class);
                         allJobsList.add(jobsStructure);
                     }
-//                    Log.v("key",node.getKey());
-/*
-                    // you will get all userID
-                    String userID = node.getKey();
-                    Log.v("userID",userID);
-
-*/
                 }
                 fetchJobsAdapter = new FetchJobsAdapter(FetchJob.this, allJobsList);
                 recyclerView.setAdapter(fetchJobsAdapter);
+
+
 
 
 

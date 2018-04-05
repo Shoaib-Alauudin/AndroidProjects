@@ -2,11 +2,9 @@ package com.example.ghulam.campussystem.FetchJobs;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ghulam.campussystem.CompanyLogin.Student;
 import com.example.ghulam.campussystem.R;
@@ -23,11 +21,10 @@ public class JobApply extends AppCompatActivity {
     private Button applyButton;
 
     private DatabaseReference mDatabase, comRef, studRef;
+
     private String pushID, ComUid;
 
-    private FirebaseAuth mAuth;
-
-    //Student Class object
+//  Student Class object to get applied student details
     private Student student;
 
     @Override
@@ -39,13 +36,11 @@ public class JobApply extends AppCompatActivity {
         companyName = (TextView)findViewById(R.id.compname_post);
         jobDes = (TextView)findViewById(R.id.description_post);
         jobSalary = (TextView)findViewById(R.id.salary_post);
-
         applyButton = (Button)findViewById(R.id.apply_button);
 
 
         pushID = getIntent().getExtras().getString("pushID");
         ComUid = getIntent().getExtras().getString("uid");
-
 
 
         comRef = FirebaseDatabase.getInstance().getReference().child("Campus System").child("Company");
@@ -57,7 +52,6 @@ public class JobApply extends AppCompatActivity {
                 comName = dataSnapshot.child("companyName").getValue().toString();
                 companyName.setText(comName);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -78,7 +72,6 @@ public class JobApply extends AppCompatActivity {
                 jobTitle.setText(title);
                 jobDes.setText(des);
                 jobSalary.setText(salary);
-
             }
 
             @Override
@@ -89,7 +82,6 @@ public class JobApply extends AppCompatActivity {
 
 //      Get Current Student id
         final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Log.v("user",userId);
 
         studRef = FirebaseDatabase.getInstance().getReference().child("Campus System").child("Student");
         studRef.child(userId).addValueEventListener(new ValueEventListener() {
@@ -97,7 +89,7 @@ public class JobApply extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 student = dataSnapshot.getValue(Student.class);
-                Log.v("stu",""+student.getStudentName());
+//                Log.v("stu",""+student.getStudentName());
 
             }
 
@@ -111,22 +103,6 @@ public class JobApply extends AppCompatActivity {
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-                mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            Toast.makeText(getApplicationContext(),"You Have Already Applied for this job",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
                 mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).setValue(new Student(student.getStudentName(),
                         student.getUserID(),student.getStudentEmail(),student.getStudentContactNumber(),student.getStudentSkills()));
 
