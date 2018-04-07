@@ -65,10 +65,6 @@ public class FetchJobsAdapter extends RecyclerView.Adapter<MyViewHolderJobs> {
             }
         });
 
-        //also capitalize
-        /*holder.name.setText(data.get(position).Title.toString().substring(0, 1).toUpperCase()
-                + data.get(position).Title.toString().substring(1));*/
-
     }
 
     @Override
@@ -90,7 +86,7 @@ class MyViewHolderJobs extends RecyclerView.ViewHolder {
         name = itemView.findViewById(R.id.singleJob);
         detailIconImage = itemView.findViewById(R.id.detail);
         this.data = data;
-    }
 
+    }
 
 }

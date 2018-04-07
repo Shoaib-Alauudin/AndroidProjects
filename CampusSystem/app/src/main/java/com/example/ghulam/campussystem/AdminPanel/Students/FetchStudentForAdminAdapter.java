@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.CompanyLogin;
+package com.example.ghulam.campussystem.AdminPanel.Students;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,21 +9,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ghulam.campussystem.CompanyLogin.Student;
+import com.example.ghulam.campussystem.CompanyLogin.StudentDetailActivity;
 import com.example.ghulam.campussystem.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by Ghulam on 3/17/2018.
+ * Created by Ghulam on 4/7/2018.
  */
 
-public class RecyclerViewAdapterStudents extends RecyclerView.Adapter<RecyclerViewAdapterStudents.ViewHolder> {
+public class FetchStudentForAdminAdapter extends RecyclerView.Adapter<FetchStudentForAdminAdapter.ViewHolder> {
 
     LayoutInflater mInfalter;
     ArrayList<Student> students;
     Context context;
 
-    public RecyclerViewAdapterStudents(Context context, ArrayList<Student> students) {
+    public FetchStudentForAdminAdapter(Context context, ArrayList<Student> students) {
 
         this.context = context;
         this.students = students;
@@ -35,7 +37,6 @@ public class RecyclerViewAdapterStudents extends RecyclerView.Adapter<RecyclerVi
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInfalter.from(parent.getContext()).
                 inflate(R.layout.student_info_row, parent, false);
-
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

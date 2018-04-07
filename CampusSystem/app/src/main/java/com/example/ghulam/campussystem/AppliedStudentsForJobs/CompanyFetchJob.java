@@ -103,7 +103,10 @@ public class CompanyFetchJob extends AppCompatActivity {
             case R.id.logOut:
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 break;
 
 

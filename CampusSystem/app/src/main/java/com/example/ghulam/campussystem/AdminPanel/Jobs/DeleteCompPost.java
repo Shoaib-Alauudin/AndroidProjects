@@ -1,8 +1,9 @@
-package com.example.ghulam.campussystem.AdminPanel;
+package com.example.ghulam.campussystem.AdminPanel.Jobs;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +41,10 @@ public class DeleteCompPost extends AppCompatActivity {
         ComUid = getIntent().getExtras().getString("uid");
 
 
+//      For Testing
+        Log.v("DeleteComPost",pushID+"    "+ComUid);
+
+
         comRef = FirebaseDatabase.getInstance().getReference().child("Campus System").child("Company");
         comRef.child(ComUid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,9 +67,9 @@ public class DeleteCompPost extends AppCompatActivity {
 
                 String title,des,salary;
 
-                title = dataSnapshot.child("title").getValue().toString();
-                des = dataSnapshot.child("description").getValue().toString();
-                salary = dataSnapshot.child("salary").getValue().toString();
+                title = (String) dataSnapshot.child("title").getValue();
+                des = (String) dataSnapshot.child("description").getValue();
+                salary = (String) dataSnapshot.child("salary").getValue();
 
                 jobTitle.setText(title);
                 jobDes.setText(des);

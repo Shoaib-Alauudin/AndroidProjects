@@ -51,21 +51,24 @@ public class AdminActivity extends AppCompatActivity {
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                Intent main = new Intent(getApplicationContext(),MainActivity.class);
+                main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(main);
+//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 break;
 
-            case R.id.jobs:
+            case R.id.adminJobs:
                 Intent intent = new Intent(getApplicationContext(), FetchJob.class);
                 startActivity(intent);
                 break;
 
-            case R.id.students:
+            case R.id.adminStudents:
                 Intent student = new Intent(getApplicationContext(), StudentList.class);
                 startActivity(student);
                 break;
 
 
-            case R.id.companies:
+            case R.id.adminCompanies:
                 Intent company = new Intent(getApplicationContext(), CompaniesList.class);
                 startActivity(company);
                 break;

@@ -8,17 +8,17 @@
         android:title="Log Out" />
 
     <item
-        android:id="@+id/students"
+        android:id="@+id/adminStudents"
         app:showAsAction="never"
         android:title="Students" />
 
     <item
-        android:id="@+id/companies"
+        android:id="@+id/adminCompanies"
         app:showAsAction="never"
         android:title="Companies" />
 
     <item
-        android:id="@+id/jobs"
+        android:id="@+id/adminJobs"
         app:showAsAction="never"
         android:title="Job" />
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_margin="@dimen/padd_16"
-    tools:context="com.example.ghulam.campussystem.AdminPanel.DeleteCompPost">
+    tools:context="com.example.ghulam.campussystem.AdminPanel.Jobs.DeleteCompPost">
 
     <TextView
         android:id="@+id/jobtitle_post"

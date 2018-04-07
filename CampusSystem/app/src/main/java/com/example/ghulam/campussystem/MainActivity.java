@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.ghulam.campussystem.AdminPanel.FetchJobsForAdmin;
+import com.example.ghulam.campussystem.AdminPanel.Jobs.FetchJobsForAdmin;
 import com.example.ghulam.campussystem.CompanyLogin.StudentList;
 import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
 import com.google.android.gms.tasks.OnCompleteListener;

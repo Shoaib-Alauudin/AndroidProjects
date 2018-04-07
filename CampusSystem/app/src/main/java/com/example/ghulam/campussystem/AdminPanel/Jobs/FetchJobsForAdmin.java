@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.AdminPanel;
+package com.example.ghulam.campussystem.AdminPanel.Jobs;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.ghulam.campussystem.CompanyLogin.StudentList;
 import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.R;
 import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
@@ -52,8 +53,6 @@ public class FetchJobsForAdmin extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
 
 
         ref= FirebaseDatabase.getInstance().getReference("Campus System").child("Jobs");
@@ -90,10 +89,9 @@ public class FetchJobsForAdmin extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        itemToHide = menu.findItem(R.id.Jobs);
+        inflater.inflate(R.menu.adminmenu, menu);
+        itemToHide = menu.findItem(R.id.adminJobs);
         itemToHide.setVisible(false);
-
         return true;
     }
 
@@ -104,11 +102,19 @@ public class FetchJobsForAdmin extends AppCompatActivity {
             case R.id.menuLogout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 break;
 
 
-            case R.id.companies:
+            case R.id.adminStudents:
+                startActivity(new Intent(getApplicationContext(),StudentList.class));
+                break;
+
+
+            case R.id.adminCompanies:
                 startActivity(new Intent(getApplicationContext(),CompaniesList.class));
                 break;
 

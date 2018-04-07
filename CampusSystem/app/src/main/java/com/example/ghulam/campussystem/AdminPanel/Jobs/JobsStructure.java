@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.AdminPanel;
+package com.example.ghulam.campussystem.AdminPanel.Jobs;
 
 /**
  * Created by Ghulam on 3/26/2018.
