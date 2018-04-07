@@ -51,7 +51,7 @@ public class DeleteCompPost extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 String comName;
-                comName = dataSnapshot.child("companyName").getValue().toString();
+                comName = (String) dataSnapshot.child("companyName").getValue();
                 companyName.setText(comName);
             }
             @Override

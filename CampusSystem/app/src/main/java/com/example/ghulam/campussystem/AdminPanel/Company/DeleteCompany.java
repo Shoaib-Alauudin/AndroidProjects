@@ -24,7 +24,7 @@ public class DeleteCompany extends AppCompatActivity {
 
     private String userID;
 
-    private DatabaseReference mDatabase,mDatabaseAdmin;
+    private DatabaseReference mDatabase,mDatabaseJobs;
 
 
     @Override
@@ -36,6 +36,9 @@ public class DeleteCompany extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference().
                 child("Campus System").child("Company");
+
+        mDatabaseJobs = FirebaseDatabase.getInstance().getReference()
+                .child("Campus System").child("Jobs");
 
         companyLogo = (ImageView)findViewById(R.id.companyLogo);
 
@@ -79,6 +82,8 @@ public class DeleteCompany extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mDatabase.child(userID).removeValue();
+
+                mDatabaseJobs.child(userID).removeValue();
                 startActivity(new Intent(getApplicationContext(), FetchCompanyForAdmin.class));
 
             }
