@@ -10,10 +10,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.ghulam.campussystem.CompanyLogin.StudentList;
+import com.example.ghulam.campussystem.AdminPanel.Company.FetchCompanyForAdmin;
+import com.example.ghulam.campussystem.AdminPanel.Students.FetchStudentForAdmin;
 import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.R;
-import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -110,12 +110,12 @@ public class FetchJobsForAdmin extends AppCompatActivity {
 
 
             case R.id.adminStudents:
-                startActivity(new Intent(getApplicationContext(),StudentList.class));
+                startActivity(new Intent(getApplicationContext(),FetchStudentForAdmin.class));
                 break;
 
 
             case R.id.adminCompanies:
-                startActivity(new Intent(getApplicationContext(),CompaniesList.class));
+                startActivity(new Intent(getApplicationContext(),FetchCompanyForAdmin.class));
                 break;
 
 

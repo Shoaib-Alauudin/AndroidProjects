@@ -59,7 +59,7 @@ public class FetchJob extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
+                allJobsList.clear();
 
                 for(DataSnapshot node : dataSnapshot.getChildren()) {
                     for (DataSnapshot nodeChild:node.getChildren()){
@@ -70,6 +70,7 @@ public class FetchJob extends AppCompatActivity {
                 }
                 fetchJobsAdapter = new FetchJobsAdapter(FetchJob.this, allJobsList);
                 recyclerView.setAdapter(fetchJobsAdapter);
+
 
             }
 

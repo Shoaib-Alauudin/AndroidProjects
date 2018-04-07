@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.AdminPanel.Students;
+package com.example.ghulam.campussystem.AdminPanel.Company;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.ghulam.campussystem.AdminPanel.Company.FetchCompanyForAdmin;
 import com.example.ghulam.campussystem.AdminPanel.Jobs.FetchJobsForAdmin;
-import com.example.ghulam.campussystem.CompanyLogin.Student;
+import com.example.ghulam.campussystem.AdminPanel.Students.FetchStudentForAdmin;
 import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.R;
+import com.example.ghulam.campussystem.StudentLogin.Company;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,46 +28,46 @@ import java.util.ArrayList;
  * Created by Ghulam on 4/7/2018.
  */
 
-public class FetchStudentForAdmin extends AppCompatActivity{
+public class FetchCompanyForAdmin extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private DatabaseReference mDatabase;
-    private ArrayList<Student> allStudentList;
+    private ArrayList<Company> allCompanyList;
     private Toolbar toolbar;
-    private FetchStudentForAdminAdapter fetchStudentForAdminAdapter;
+    private FetchCompanyForAdminAdapter fetchCompanyForAdminAdapter;
 
     private MenuItem itemToHide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_list);
-        setTitle("Available Students");
+        setContentView(R.layout.activity_companies_list);
 
-//      allCompanyList = new ArrayList<Company>();
-        allStudentList = new ArrayList<Student>();
+        setTitle("Available Companies");
 
+        allCompanyList = new ArrayList();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = (RecyclerView)findViewById(R.id.companies_list);
+        recyclerView = findViewById(R.id.companies_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
+
 //      Firebase Database Reference
         mDatabase = FirebaseDatabase.getInstance().getReference()
-                .child("Campus System").child("Student");
+                .child("Campus System").child("Company");
+
 
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Student student = dataSnapshot.getValue(Student.class);
-                allStudentList.add(student);
-                fetchStudentForAdminAdapter = new FetchStudentForAdminAdapter(FetchStudentForAdmin.this,
-                        allStudentList);
-                recyclerView.setAdapter(fetchStudentForAdminAdapter);
-
+                Company company = dataSnapshot.getValue(Company.class);
+                allCompanyList.add(company);
+                fetchCompanyForAdminAdapter = new FetchCompanyForAdminAdapter(FetchCompanyForAdmin.this, allCompanyList);
+                recyclerView.setAdapter(fetchCompanyForAdminAdapter);
             }
 
             @Override
@@ -90,9 +90,6 @@ public class FetchStudentForAdmin extends AppCompatActivity{
 
             }
         });
-
-
-
     }
 
     //  Menu activity
@@ -101,7 +98,7 @@ public class FetchStudentForAdmin extends AppCompatActivity{
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.adminmenu, menu);
-        itemToHide = menu.findItem(R.id.adminStudents);
+        itemToHide = menu.findItem(R.id.adminCompanies);
         itemToHide.setVisible(false);
         return true;
     }
@@ -125,12 +122,13 @@ public class FetchStudentForAdmin extends AppCompatActivity{
                 break;
 
 
-            case R.id.adminCompanies:
-                startActivity(new Intent(getApplicationContext(),FetchCompanyForAdmin.class));
+            case R.id.adminStudents:
+                startActivity(new Intent(getApplicationContext(),FetchStudentForAdmin.class));
                 break;
 
 
         }
         return true;
     }
+
 }

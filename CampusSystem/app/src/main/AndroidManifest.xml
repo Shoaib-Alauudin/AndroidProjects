@@ -26,7 +26,6 @@
             android:name=".CompanyLogin.StudentDetailActivity"
             android:parentActivityName=".CompanyLogin.StudentList" />
         <activity android:name=".CompanyLogin.StudentList" />
-        <activity android:name=".AdminPanel.AdminActivity" />
         <activity android:name=".AdminPanel.Jobs.FetchJobsForAdmin" />
         <activity android:name=".CompanyProfile" />
         <activity android:name=".PostJobs" />
@@ -40,7 +39,15 @@
         <activity
             android:name=".AdminPanel.Jobs.DeleteCompPost"
             android:parentActivityName=".AdminPanel.Jobs.FetchJobsForAdmin" />
-        <activity android:name=".AdminPanel.Students.DeleteStudent"></activity>
+        <activity android:name=".AdminPanel.Students.FetchStudentForAdmin" />
+        <activity android:name=".AdminPanel.Company.FetchCompanyForAdmin" />
+
+        <activity
+            android:name=".AdminPanel.Students.DeleteStudent"
+            android:parentActivityName=".AdminPanel.Students.FetchStudentForAdmin" />
+
+        <activity android:name=".AdminPanel.Company.DeleteCompany"
+            android:parentActivityName=".AdminPanel.Company.FetchCompanyForAdmin"></activity>
     </application>
 
 </manifest>

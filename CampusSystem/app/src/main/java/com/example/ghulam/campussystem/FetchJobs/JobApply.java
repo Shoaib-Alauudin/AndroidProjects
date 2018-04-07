@@ -105,7 +105,7 @@ public class JobApply extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).addValueEventListener(new ValueEventListener() {
+                /*mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -116,6 +116,29 @@ public class JobApply extends AppCompatActivity {
 
                             mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).setValue(new Student(student.getStudentName(),
                                     student.getUserID(),student.getStudentEmail(),student.getStudentContactNumber(),student.getStudentSkills()));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });*/
+
+                mDatabase.child(ComUid).child(pushID).child("jobapplied").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.child(userId).exists()) {
+                            // run some code
+                            Toast.makeText(JobApply.this,"You Have Already Applied for this Job", Toast.LENGTH_SHORT).show();
+
+                        }else{
+
+                            mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId)
+                                    .setValue(new Student(student.getStudentName(),
+                                    student.getUserID(),student.getStudentEmail(),
+                                            student.getStudentContactNumber(),student.getStudentSkills()));
+
                         }
                     }
 

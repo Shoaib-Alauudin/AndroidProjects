@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ghulam.campussystem.CompanyLogin.Student;
-import com.example.ghulam.campussystem.CompanyLogin.StudentDetailActivity;
 import com.example.ghulam.campussystem.R;
 
 import java.util.ArrayList;
@@ -64,7 +63,7 @@ public class FetchStudentForAdminAdapter extends RecyclerView.Adapter<FetchStude
             @Override
             public void onClick(View v) {
                 final Context context = v.getContext();
-                Intent studentDetailActivity = new Intent(context, StudentDetailActivity.class);
+                Intent studentDetailActivity = new Intent(context, DeleteStudent.class);
                 studentDetailActivity.putExtra("key",userID);
                 context.startActivity(studentDetailActivity);
             }

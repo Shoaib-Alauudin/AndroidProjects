@@ -101,17 +101,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 user = mAuth.getCurrentUser();
-//                userID = user.getUid();
 
                 if (task.isSuccessful()){
                     editTextEmail.setText("");
                     editTextPassword.setText("");
-//                    progressBar.setVisibility(View.GONE);
 
                     Toast.makeText(MainActivity.this,R.string.loginSuccessful,Toast.LENGTH_SHORT).show();
 
-//                    Temporary for checking purpose
-//                    startActivity(new Intent(MainActivity.this, StudentList.class));
 
                     logginChecker(user.getUid());
 
@@ -165,9 +161,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(dataSnapshot.exists()){
                     System.out.println("hello");
                     progressDialog.dismiss();
+
                     //removing this activity from back stack
                     finish();
-                    //opening studentsFeed
+
+                    //opening Admin
                     startActivity(new Intent(MainActivity.this,FetchJobsForAdmin.class));
                 } else{
                     forAccountCheck++;
@@ -175,13 +173,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if(forAccountCheck>=3){
 
                         progressDialog.dismiss();
-
-                        Toast.makeText(MainActivity.this,"No user is logged in ",Toast.LENGTH_LONG).show();
+//                        Toast.makeText(MainActivity.this,"No user is logged in ",Toast.LENGTH_LONG).show();
                         finish();
 
 
                     }
-                    System.out.println("#"+forAccountCheck);
                 }
             }
 
@@ -210,7 +206,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //if for account checck here has value >=3 it means that id is not present in either of tables
                     if(forAccountCheck>=3){
                         progressDialog.dismiss();
-                        Toast.makeText(MainActivity.this,"No user is logged in ",Toast.LENGTH_LONG).show();
                         finish();
                     }
                 }
@@ -241,7 +236,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //if for account checck here has value >=3 it means that id is not present in either of tables
                     if(forAccountCheck>=3){
                         progressDialog.dismiss();
-                        Toast.makeText(MainActivity.this,"No user is logged in ",Toast.LENGTH_LONG).show();
                         finish();
 
 
