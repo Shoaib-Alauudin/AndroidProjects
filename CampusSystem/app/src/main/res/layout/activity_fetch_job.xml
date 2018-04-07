@@ -8,6 +8,13 @@
     tools:context="com.example.ghulam.campussystem.FetchJobs.FetchJob">
 
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/colorAccent"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/job_list"
         android:layout_width="match_parent"

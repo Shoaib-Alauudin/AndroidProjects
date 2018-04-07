@@ -1,43 +1,39 @@
-package com.example.ghulam.campussystem.FetchJobs;
+package com.example.ghulam.campussystem.AdminPanel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ghulam.campussystem.CompanyLogin.Student;
 import com.example.ghulam.campussystem.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class JobApply extends AppCompatActivity {
+public class DeleteCompPost extends AppCompatActivity {
 
     private TextView jobTitle, companyName, jobDes, jobSalary;
-    private Button applyButton;
+    private Button deleteButton;
 
     private DatabaseReference mDatabase, comRef, studRef;
 
     private String pushID, ComUid;
 
-//  Student Class object to get applied student details
-    private Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job_apply);
+        setContentView(R.layout.activity_delete_comp_post);
 
         jobTitle = (TextView)findViewById(R.id.jobtitle_post);
         companyName = (TextView)findViewById(R.id.compname_post);
         jobDes = (TextView)findViewById(R.id.description_post);
         jobSalary = (TextView)findViewById(R.id.salary_post);
-        applyButton = (Button)findViewById(R.id.apply_button);
+        deleteButton = (Button)findViewById(R.id.delete_button);
 
 
         pushID = getIntent().getExtras().getString("pushID");
@@ -81,51 +77,13 @@ public class JobApply extends AppCompatActivity {
             }
         });
 
-//      Get Current Student id
-        final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        studRef = FirebaseDatabase.getInstance().getReference().child("Campus System").child("Student");
-        studRef.child(userId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                student = dataSnapshot.getValue(Student.class);
-//                Log.v("stu",""+student.getStudentName());
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-        applyButton.setOnClickListener(new View.OnClickListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        if (dataSnapshot.exists()){
-                            Toast.makeText(JobApply.this,"You Have Already Applied for this Job", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-
-                            mDatabase.child(ComUid).child(pushID).child("jobapplied").child(userId).setValue(new Student(student.getStudentName(),
-                                    student.getUserID(),student.getStudentEmail(),student.getStudentContactNumber(),student.getStudentSkills()));
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
+                mDatabase.child(ComUid).child(pushID).removeValue();
+                startActivity(new Intent(getApplicationContext(), FetchJobsForAdmin.class));
             }
         });
 

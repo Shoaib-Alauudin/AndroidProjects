@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.ghulam.campussystem.AppliedStudentsForJobs.CompanyFetchJob;
 import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.PostJobs;
 import com.example.ghulam.campussystem.R;
@@ -29,6 +30,8 @@ public class StudentList extends AppCompatActivity {
     private ArrayList<Student> allStudentList;
     private Toolbar toolbar;
     private RecyclerViewAdapterStudents studentAdapter;
+
+    private MenuItem itemHide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +96,10 @@ public class StudentList extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
+        inflater.inflate(R.menu.company_menu, menu);
+        itemHide = menu.findItem(R.id.students);
+        itemHide.setVisible(false);
+
 
         return true;
     }
@@ -103,7 +109,7 @@ public class StudentList extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menuLogout:
+            case R.id.logOut:
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -113,6 +119,12 @@ public class StudentList extends AppCompatActivity {
                 Intent intent = new Intent(StudentList.this, PostJobs.class);
                 startActivity(intent);
                 break;
+
+            case R.id.postedJobs:
+                Intent fetchJobs = new Intent(StudentList.this, CompanyFetchJob.class);
+                startActivity(fetchJobs);
+                break;
+
         }
 
         return true;

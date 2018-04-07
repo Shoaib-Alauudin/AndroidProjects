@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.StudentLogin;
+package com.example.ghulam.campussystem.AdminPanel;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,73 +10,70 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.ghulam.campussystem.FetchJobs.FetchJob;
 import com.example.ghulam.campussystem.MainActivity;
 import com.example.ghulam.campussystem.R;
+import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CompaniesList extends AppCompatActivity {
+/**
+ * Created by Ghulam on 4/6/2018.
+ */
+
+public class FetchJobsForAdmin extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private DatabaseReference mDatabase;
-    private ArrayList<Company> allCompanyList;
+    private DatabaseReference ref;
+    private ArrayList<JobsStructure> allJobsList;
+    private FetchJobForAdminAdapter fetchJobForAdminAdapter;
+
     private Toolbar toolbar;
-    private RecyclerViewAdapterCompanies companyAdapter;
 
     private MenuItem itemToHide;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_companies_list);
-
-        setTitle("Available Companies");
-
-        allCompanyList = new ArrayList();
+        setContentView(R.layout.activity_fetch_job);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = findViewById(R.id.companies_list);
+        allJobsList = new ArrayList<>();
+
+
+
+        recyclerView = (RecyclerView)findViewById(R.id.job_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
-//      Firebase Database Reference
-        mDatabase = FirebaseDatabase.getInstance().getReference()
-                .child("Campus System").child("Company");
+
+        ref= FirebaseDatabase.getInstance().getReference("Campus System").child("Jobs");
 
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Company company = dataSnapshot.getValue(Company.class);
-                allCompanyList.add(company);
-                companyAdapter = new RecyclerViewAdapterCompanies(CompaniesList.this,
-                        allCompanyList);
-                recyclerView.setAdapter(companyAdapter);
-            }
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                for(DataSnapshot node : dataSnapshot.getChildren()) {
+                    for (DataSnapshot nodeChild:node.getChildren()){
+//                        Log.v("key",nodeChild.getKey());
+                        JobsStructure jobsStructure = nodeChild.getValue(JobsStructure.class);
+                        allJobsList.add(jobsStructure);
+                    }
+                }
+                fetchJobForAdminAdapter = new FetchJobForAdminAdapter(FetchJobsForAdmin.this, allJobsList);
+                recyclerView.setAdapter(fetchJobForAdminAdapter);
 
             }
 
@@ -85,21 +82,22 @@ public class CompaniesList extends AppCompatActivity {
 
             }
         });
+
     }
 
-//  Menu activity
+    //  Menu activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-        itemToHide = menu.findItem(R.id.companies);
+        itemToHide = menu.findItem(R.id.Jobs);
         itemToHide.setVisible(false);
 
         return true;
     }
 
-//  logOut button on Menu activity
+    //  logOut button on Menu activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
@@ -110,13 +108,12 @@ public class CompaniesList extends AppCompatActivity {
                 break;
 
 
-            case R.id.Jobs:
-                startActivity(new Intent(getApplicationContext(),FetchJob.class));
+            case R.id.companies:
+                startActivity(new Intent(getApplicationContext(),CompaniesList.class));
                 break;
 
 
         }
         return true;
     }
-
 }

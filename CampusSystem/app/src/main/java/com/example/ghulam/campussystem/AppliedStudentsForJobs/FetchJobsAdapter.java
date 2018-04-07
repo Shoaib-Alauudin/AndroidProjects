@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.FetchJobs;
+package com.example.ghulam.campussystem.AppliedStudentsForJobs;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ghulam.campussystem.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -23,6 +25,10 @@ public class FetchJobsAdapter extends RecyclerView.Adapter<MyViewHolderJobs> {
     Context context;
     ArrayList<JobsStructure> data;
 
+
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+            .child("Campus System")
+            .child("Jobs");
 
 
     public FetchJobsAdapter(Context context, ArrayList<JobsStructure> data) {
@@ -52,22 +58,20 @@ public class FetchJobsAdapter extends RecyclerView.Adapter<MyViewHolderJobs> {
         pushID = jobsStructure.getPushid();
         uid = jobsStructure.getUid();
 
+
         holder.name.setText(jobTitle.toUpperCase());
         holder.detailIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Context context = v.getContext();
-
-                Intent jobApply = new Intent(context, JobApply.class);
-                jobApply.putExtra("pushID",pushID);
-                jobApply.putExtra("uid",uid);
-                context.startActivity(jobApply);
+                Intent postedJob = new Intent(context, PostedJobDetails.class);
+                postedJob.putExtra("pushID",pushID);
+                postedJob.putExtra("uid",uid);
+                postedJob.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(postedJob);
             }
         });
 
-        //also capitalize
-        /*holder.name.setText(data.get(position).Title.toString().substring(0, 1).toUpperCase()
-                + data.get(position).Title.toString().substring(1));*/
 
     }
 

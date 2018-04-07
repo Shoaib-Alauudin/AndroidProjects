@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menuLogout"
+        android:id="@+id/logOut"
         app:showAsAction="never"
         android:title="Log Out" />
 
-  <!--  <item
+    <item
         android:id="@+id/jobPost"
         app:showAsAction="never"
-        android:title="Post New Job" />-->
+        android:title="Post New Job" />
 
     <item
-        android:id="@+id/companies"
+        android:id="@+id/postedJobs"
         app:showAsAction="never"
-        android:title="Companies" />
+        android:title="Posted Jobs" />
 
     <item
-        android:id="@+id/Jobs"
+        android:id="@+id/students"
         app:showAsAction="never"
-        android:title="Available Jobs" />
+        android:title="Students" />
 
 
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="@dimen/padd_16"
+    tools:context="com.example.ghulam.campussystem.AdminPanel.DeleteCompPost">
+
+    <TextView
+        android:id="@+id/jobtitle_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Job Title"
+        android:gravity="center"
+        android:textSize="36sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padd_8"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company Name"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/compname_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Panacloud"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/description_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:maxLines="5"
+        android:gravity="center|left"
+        android:paddingTop="@dimen/padd_8"
+        android:paddingBottom="@dimen/padd_8"
+        android:text="Description : sdksadmaskcmsklcmsaklcmksmcksmcsmckscmksmcksmcksmckmsacmsacmksmckasmckmsmsckmsckmaskcmsakmckmsckmsckmaskcmsak" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/padd_8"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salary : "
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/salary_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10000"
+            android:textSize="22sp" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_margin="@dimen/padd_16"
+        android:background="@drawable/rounded_button_solid"
+        />
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.StudentLogin;
+package com.example.ghulam.campussystem.AppliedStudentsForJobs;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,73 +10,70 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.ghulam.campussystem.FetchJobs.FetchJob;
+import com.example.ghulam.campussystem.CompanyLogin.StudentList;
 import com.example.ghulam.campussystem.MainActivity;
+import com.example.ghulam.campussystem.PostJobs;
 import com.example.ghulam.campussystem.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class CompaniesList extends AppCompatActivity {
+public class CompanyFetchJob extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private DatabaseReference mDatabase;
-    private ArrayList<Company> allCompanyList;
-    private Toolbar toolbar;
-    private RecyclerViewAdapterCompanies companyAdapter;
+    private DatabaseReference ref;
+    private ArrayList<JobsStructure> allJobsList;
+    private FetchJobsAdapter fetchJobsAdapter;
 
+    private Toolbar toolbar;
     private MenuItem itemToHide;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_companies_list);
-
-        setTitle("Available Companies");
-
-        allCompanyList = new ArrayList();
+        setContentView(R.layout.activity_fetch_job);
+        setTitle("Offered Jobs");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = findViewById(R.id.companies_list);
+        allJobsList = new ArrayList<>();
+
+
+
+        recyclerView = (RecyclerView)findViewById(R.id.job_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
-//      Firebase Database Reference
-        mDatabase = FirebaseDatabase.getInstance().getReference()
-                .child("Campus System").child("Company");
 
+        ref= FirebaseDatabase.getInstance().getReference("Campus System").child("Jobs").child(userID);
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Company company = dataSnapshot.getValue(Company.class);
-                allCompanyList.add(company);
-                companyAdapter = new RecyclerViewAdapterCompanies(CompaniesList.this,
-                        allCompanyList);
-                recyclerView.setAdapter(companyAdapter);
-            }
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                for(DataSnapshot node : dataSnapshot.getChildren()) {
+                    JobsStructure jobsStructure = node.getValue(JobsStructure.class);
+                    allJobsList.add(jobsStructure);
+                }
 
-            }
+                fetchJobsAdapter = new FetchJobsAdapter(CompanyFetchJob.this, allJobsList);
+                recyclerView.setAdapter(fetchJobsAdapter);
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-            }
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
 
             }
 
@@ -87,33 +84,37 @@ public class CompaniesList extends AppCompatActivity {
         });
     }
 
-//  Menu activity
+    //  Menu activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        itemToHide = menu.findItem(R.id.companies);
+        inflater.inflate(R.menu.company_menu, menu);
+        itemToHide = menu.findItem(R.id.postedJobs);
         itemToHide.setVisible(false);
 
         return true;
     }
 
-//  logOut button on Menu activity
+    //  logOut button on Menu activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menuLogout:
+            case R.id.logOut:
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 break;
 
 
-            case R.id.Jobs:
-                startActivity(new Intent(getApplicationContext(),FetchJob.class));
+            case R.id.jobPost:
+                startActivity(new Intent(getApplicationContext(),PostJobs.class));
                 break;
 
+
+            case R.id.students:
+                startActivity(new Intent(getApplicationContext(),StudentList.class));
+                break;
 
         }
         return true;

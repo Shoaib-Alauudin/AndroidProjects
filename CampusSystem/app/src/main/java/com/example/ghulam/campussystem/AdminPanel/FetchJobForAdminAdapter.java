@@ -1,4 +1,4 @@
-package com.example.ghulam.campussystem.FetchJobs;
+package com.example.ghulam.campussystem.AdminPanel;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,43 +9,43 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ghulam.campussystem.FetchJobs.JobApply;
 import com.example.ghulam.campussystem.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by Ghulam on 3/26/2018.
+ * Created by Ghulam on 4/6/2018.
  */
 
-public class FetchJobsAdapter extends RecyclerView.Adapter<MyViewHolderJobs> {
+public class FetchJobForAdminAdapter extends RecyclerView.Adapter<MyViewHolderJobs> {
 
-    LayoutInflater lf;
-    Context context;
-    ArrayList<JobsStructure> data;
+        LayoutInflater lf;
+        Context context;
+        ArrayList<JobsStructure> data;
 
 
 
-    public FetchJobsAdapter(Context context, ArrayList<JobsStructure> data) {
+public FetchJobForAdminAdapter(Context context, ArrayList<JobsStructure> data) {
 
         this.context = context;
         this.data = data;
-
         lf = LayoutInflater.from(context);
-    }
+        }
 
-    @Override
-    public MyViewHolderJobs onCreateViewHolder(ViewGroup parent, int viewType) {
+@Override
+public MyViewHolderJobs onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = lf.inflate(R.layout.single_student_row, parent, false);
         MyViewHolderJobs holder = new MyViewHolderJobs(view, data);
         return holder;
-    }
+        }
 
-    @Override
-    public void onBindViewHolder(MyViewHolderJobs holder, int position) {
+@Override
+public void onBindViewHolder(MyViewHolderJobs holder, int position) {
 
-        final String jobTitle;
-        final String pushID, uid;
+final String jobTitle;
+final String pushID, uid;
 
         JobsStructure jobsStructure = data.get(position);
         jobTitle = jobsStructure.getTitle();
@@ -54,28 +54,28 @@ public class FetchJobsAdapter extends RecyclerView.Adapter<MyViewHolderJobs> {
 
         holder.name.setText(jobTitle.toUpperCase());
         holder.detailIconImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Context context = v.getContext();
+@Override
+public void onClick(View v) {
+final Context context = v.getContext();
 
-                Intent jobApply = new Intent(context, JobApply.class);
-                jobApply.putExtra("pushID",pushID);
-                jobApply.putExtra("uid",uid);
-                context.startActivity(jobApply);
-            }
+        Intent jobApply = new Intent(context, JobApply.class);
+        jobApply.putExtra("pushID",pushID);
+        jobApply.putExtra("uid",uid);
+        context.startActivity(jobApply);
+        }
         });
 
         //also capitalize
         /*holder.name.setText(data.get(position).Title.toString().substring(0, 1).toUpperCase()
                 + data.get(position).Title.toString().substring(1));*/
 
-    }
+        }
 
-    @Override
-    public int getItemCount() {
+@Override
+public int getItemCount() {
         return data.size();
-    }
-}
+        }
+        }
 
 class MyViewHolderJobs extends RecyclerView.ViewHolder {
 

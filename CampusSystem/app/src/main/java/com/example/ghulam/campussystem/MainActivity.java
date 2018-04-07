@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.ghulam.campussystem.AdminPanel.AdminActivity;
+import com.example.ghulam.campussystem.AdminPanel.FetchJobsForAdmin;
 import com.example.ghulam.campussystem.CompanyLogin.StudentList;
 import com.example.ghulam.campussystem.StudentLogin.CompaniesList;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //removing this activity from back stack
                     finish();
                     //opening studentsFeed
-                    startActivity(new Intent(MainActivity.this,AdminActivity.class));
+                    startActivity(new Intent(MainActivity.this,FetchJobsForAdmin.class));
                 } else{
                     forAccountCheck++;
                     //if for account checck here has value >=3 it means that id is not present in either of tables
