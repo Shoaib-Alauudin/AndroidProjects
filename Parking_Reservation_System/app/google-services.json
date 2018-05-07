@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "266322074974",
+    "firebase_url": "https://parkingreservationsystem-4eec2.firebaseio.com",
+    "project_id": "parkingreservationsystem-4eec2",
+    "storage_bucket": "parkingreservationsystem-4eec2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266322074974:android:1bfbf4b69c65008b",
+        "android_client_info": {
+          "package_name": "com.example.ghulam.parkingreservationsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266322074974-0jjd27207corj1olrfs9jt7engjccfrt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ghulam.parkingreservationsystem",
+            "certificate_hash": "1c6710ed86e00a6e3e371897195579fdeb1240cf"
+          }
+        },
+        {
+          "client_id": "266322074974-1qkdeg80jj4lg18njf3vl1rv8pvfbtr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuYE_sR85tgzX0W9xVoVEWRMvK9ZxttJY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266322074974-1qkdeg80jj4lg18njf3vl1rv8pvfbtr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

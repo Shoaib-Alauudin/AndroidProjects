@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Parking Reservation System</string>
+    <string name="your_bookings">Booking History</string>
+    <string name="you_haven_t_booked_any_parking">You haven\'t booked any parking</string>
+    <string name="book_now">Book now</string>
+
+
+    <string name="select">Please Select</string>
+    <string name="read_more">Read More</string>
+    <string name="car_license_number">Car License Number:</string>
+    <string name="car">Car :</string>
+    <string name="parking_slot">Parking Slot:</string>
+    <string name="parking_area">Parking Area:</string>
+    <string name="mall">Mll:</string>
+    <string name="user">User:</string>
+    <string name="show_available_slots">Show Available Slots</string>
+    <string-array name="slots">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="duration">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+</resources>

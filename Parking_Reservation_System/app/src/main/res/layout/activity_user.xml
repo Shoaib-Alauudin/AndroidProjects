@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cardview_shadow_start_color"
+    tools:context="com.example.ghulam.parkingreservationsystem.Users.UserActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/colorAccent"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtYourBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padd_16"
+            android:text="@string/your_bookings"
+            android:textSize="20sp"
+            android:textColor="#c4c4c4"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/root_ListView_User_EmptyError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/you_haven_t_booked_any_parking"
+            android:textStyle="bold|italic"
+            android:textColor="#d9d9d9"
+            android:textSize="17sp"
+            android:visibility="gone" />
+
+        <ListView
+            android:id="@+id/root_ListView_User"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_User_BookNow"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txtYourBooking"
+            android:layout_marginTop="3dp"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:id="@+id/btn_User_BookNow"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:text="@string/book_now"
+            android:textAllCaps="true"
+            android:layout_marginTop="@dimen/padd_16"
+            android:layout_marginLeft="@dimen/padd_8"
+            android:layout_marginRight="@dimen/padd_8"
+            android:layout_marginBottom="@dimen/padd_8"
+            android:textColorHighlight="@android:color/holo_blue_dark"
+            android:background="@drawable/rounded_botton_solid"/>
+
+    </RelativeLayout>
+</LinearLayout>
