@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:orientation="horizontal"
+    android:layout_margin="4dp"
+    android:background="@drawable/rounded_button_transparent">
+
+    <ImageView
+        android:id="@+id/studentImageView"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:background="@drawable/studenticon"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="8"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="@dimen/padd_8">
+
+        <TextView
+            android:id="@+id/StudentNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Name"
+            android:gravity="bottom|center"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/qualificationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Qualification"
+            android:gravity="top|center" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/studentDetailImageView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginRight="@dimen/padd_8"
+        android:src="@android:drawable/ic_menu_info_details"
+        />
+
+</LinearLayout>

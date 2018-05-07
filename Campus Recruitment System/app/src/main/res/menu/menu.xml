@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuLogout"
+        app:showAsAction="never"
+        android:title="Log Out" />
+
+  <!--  <item
+        android:id="@+id/jobPost"
+        app:showAsAction="never"
+        android:title="Post New Job" />-->
+
+    <item
+        android:id="@+id/companies"
+        app:showAsAction="never"
+        android:title="Companies" />
+
+    <item
+        android:id="@+id/Jobs"
+        app:showAsAction="never"
+        android:title="Available Jobs" />
+
+
+
+</menu>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/padd_8"
+    android:layout_marginBottom="@dimen/padd_16"
+    android:gravity="center"
+    android:background="@drawable/rounded_button_transparent"
+    tools:context="com.example.ghulam.campussystem.AdminPanel.Company.DeleteCompany">
+
+    <ImageView
+        android:id="@+id/companyLogo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/hp"
+        android:layout_margin="@dimen/padd_16" />
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Company Name"
+        android:gravity="center"
+        android:textStyle="bold|italic"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/padd_8"
+        android:layout_marginTop="@dimen/padd_32">
+
+        <ImageView
+            android:src="@drawable/mailicon"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/companyEmail"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="50dp"
+            android:text="Company Email"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:gravity="center|left"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#68b6ed"
+        android:layout_marginLeft="@dimen/padd_16"
+        android:layout_marginRight="@dimen/padd_16"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/padd_8"
+        android:layout_marginBottom="@dimen/padd_8">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="45dp"
+            android:src="@drawable/web"/>
+
+        <TextView
+            android:id="@+id/companyWebsite"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="8"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Company Website"
+            android:gravity="center|left" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#68b6ed"
+        android:layout_marginLeft="@dimen/padd_16"
+        android:layout_marginRight="@dimen/padd_16"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/padd_8"
+        android:layout_marginBottom="@dimen/padd_8">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="50dp"
+            android:src="@drawable/call1"/>
+
+        <TextView
+            android:id="@+id/companyContact"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="50dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Company Contact"
+            android:gravity="center|left"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#68b6ed"
+        android:layout_marginLeft="@dimen/padd_16"
+        android:layout_marginRight="@dimen/padd_16"/>
+
+    <Button
+        android:id="@+id/deleteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Delete"
+        android:background="@drawable/rounded_button_solid"
+        android:layout_margin="@dimen/padd_32" />
+
+
+</LinearLayout>
+

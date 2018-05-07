@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="@dimen/padd_16"
+    tools:context="com.example.ghulam.campussystem.PostJobs">
+
+
+
+    <TextView
+        android:id="@+id/studentProfileTopText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Job"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/padd_16"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/studentProfileWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Be carefull information once added cant be changed . All fields are mandatory" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/padd_8">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/job"/>
+
+        <EditText
+            android:id="@+id/postJobTitle"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="textCapWords|textAutoCorrect"
+            android:hint="Job title" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/padd_8">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/salary2"/>
+
+        <EditText
+            android:id="@+id/postJobSalary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:layout_marginTop="10dp"
+            android:hint="Salary"
+            android:inputType="numberDecimal"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/padd_8">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/des"/>
+
+        <EditText
+            android:id="@+id/postJobDescription"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Short description"
+            android:inputType="textShortMessage"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:background="@drawable/rounded_button_solid"
+        android:id="@+id/postJobSubmitBtn"
+        android:layout_margin="@dimen/padd_32"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

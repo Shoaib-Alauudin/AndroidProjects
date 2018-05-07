@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ghulam.campussystem">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".StudentLogin.CompaniesList" />
+        <activity
+            android:name=".StudentLogin.CompanyDetailActivity"
+            android:parentActivityName=".StudentLogin.CompaniesList" />
+        <activity
+            android:name=".CompanyLogin.StudentDetailActivity"
+            android:parentActivityName=".CompanyLogin.StudentList" />
+        <activity android:name=".CompanyLogin.StudentList" />
+        <activity android:name=".AdminPanel.Jobs.FetchJobsForAdmin" />
+        <activity android:name=".CompanyProfile" />
+        <activity android:name=".PostJobs" />
+        <activity android:name=".AppliedStudentsForJobs.CompanyFetchJob" />
+        <activity android:name=".FetchJobs.FetchJob" />
+        <activity android:name=".FetchJobs.JobApply" />
+        <activity
+            android:name=".AppliedStudentsForJobs.PostedJobDetails"
+            android:parentActivityName=".AppliedStudentsForJobs.CompanyFetchJob" />
+        <activity android:name=".AppliedStudentsForJobs.AppliedStudentDetails" />
+        <activity
+            android:name=".AdminPanel.Jobs.DeleteCompPost"
+            android:parentActivityName=".AdminPanel.Jobs.FetchJobsForAdmin" />
+        <activity android:name=".AdminPanel.Students.FetchStudentForAdmin" />
+        <activity android:name=".AdminPanel.Company.FetchCompanyForAdmin" />
+
+        <activity
+            android:name=".AdminPanel.Students.DeleteStudent"
+            android:parentActivityName=".AdminPanel.Students.FetchStudentForAdmin" />
+
+        <activity android:name=".AdminPanel.Company.DeleteCompany"
+            android:parentActivityName=".AdminPanel.Company.FetchCompanyForAdmin"></activity>
+    </application>
+
+</manifest>
