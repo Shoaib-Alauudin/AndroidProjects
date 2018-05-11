@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.ghulam.parkingreservationsystem.R;
 import com.example.ghulam.parkingreservationsystem.Users.CheckAvailability;
 
 import java.text.ParseException;
@@ -51,20 +52,21 @@ class ParkingAreaAdapter extends RecyclerView.Adapter<ParkingAreaAdapter.ViewHol
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parking_area_booking_button_item,parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parking_area_booking_button_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Slot slot = slotArrayList.get(position);
         holder.slotbtn.setText(slot.getSlotName());
 
-        int colorGreen = Color.parseColor("#ccfcj9");
-        int colorRed = Color.parseColor("ffs7f8");
+        int colorGreen = Color.parseColor("#14860d");
+        int colorRed = Color.parseColor("#ec1924");
 
         if (checkAvailabilityArrayList.size() != 0){
             for (int i = 0; i<checkAvailabilityArrayList.size(); i++){
+
 
                 if (slot.getId().equals(checkAvailabilityArrayList.get(i).getSlotKey())){
 
@@ -85,6 +87,13 @@ class ParkingAreaAdapter extends RecyclerView.Adapter<ParkingAreaAdapter.ViewHol
                 }
             }
         }
+
+        holder.slotbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onButtonClickListener(position);
+            }
+        });
     }
 
     private boolean CheckDateAndTime(String userSelectedDate, String userSelectedTime,
@@ -118,7 +127,30 @@ class ParkingAreaAdapter extends RecyclerView.Adapter<ParkingAreaAdapter.ViewHol
             long bookingStartTimeStamp = bookStartTimeAndDate.getTime();
             long bookingEndTimeStamp = bookEndTimeAndDate.getTime();
 
-            if (!(currentUserStartTimeStamp < bookingStartTimeStamp && currentUserEndTimeStamp > bookingStartTimeStamp || currentUserStartTimeStamp < bookingEndTimeStamp && currentUserEndTimeStamp > bookingEndTimeStamp)) {
+
+            if ((currentUserStartTimeStamp >= bookingStartTimeStamp && currentUserStartTimeStamp <= bookingEndTimeStamp
+                    || currentUserStartTimeStamp <= bookingStartTimeStamp && currentUserEndTimeStamp >= bookingStartTimeStamp)) {
+                /*
+                * ((currentUserStartTimeStamp >= bookingStartTimeStamp && currentUserEndTimeStamp >= bookingStartTimeStamp
+                    || currentUserStartTimeStamp <= bookingStartTimeStamp && currentUserEndTimeStamp >= bookingStarTimeStamp))
+
+
+                (currentUserStartTimeStamp >= bookingStartTimeStamp && currentUserStartTimeStamp <= bookingEndTimeStamp
+                    || currentUserStartTimeStamp <= bookingStartTimeStamp && currentUserEndTimeStamp >= bookingStartTimeStamp)
+
+
+
+                !(userCurrentStartTimeStamp < toCheckTimeStampStart
+                    && userCurrentEndTimeStamp > toCheckTimeStampStart
+                    || userCurrentStartTimeStamp < toCheckTimeStampEnd
+                    && userCurrentEndTimeStamp > toCheckTimeStampEnd)
+
+
+
+                    !(currentUserStartTimeStamp < bookingStartTimeStamp && currentUserEndTimeStamp > bookingStartTimeStamp
+                    || currentUserStartTimeStamp < bookingEndTimeStamp && currentUserEndTimeStamp > bookingEndTimeStamp)
+                * */
+
                 Log.e("TAG", "checkDateAndTime: True OMG ");
                 Flag = true;
             } else {
@@ -140,10 +172,13 @@ class ParkingAreaAdapter extends RecyclerView.Adapter<ParkingAreaAdapter.ViewHol
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         Button slotbtn;
+        int colorGreen = Color.parseColor("#14860d");
+
 
         public ViewHolder(View itemView) {
             super(itemView);
             slotbtn = itemView.findViewById(R.id.parking_area_slot_button);
+            slotbtn.setBackgroundColor(colorGreen);
         }
     }
 }

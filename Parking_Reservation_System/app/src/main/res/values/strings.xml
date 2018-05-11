@@ -14,6 +14,10 @@
     <string name="mall">Mll:</string>
     <string name="user">User:</string>
     <string name="show_available_slots">Show Available Slots</string>
+    <string name="select_hours">Selected Hours</string>
+    <string name="selected_time">Selected TIme</string>
+    <string name="selected_date">Selected Date</string>
+    <string name="book_parking_now">Book Now</string>
     <string-array name="slots">
         <item>1</item>
         <item>2</item>

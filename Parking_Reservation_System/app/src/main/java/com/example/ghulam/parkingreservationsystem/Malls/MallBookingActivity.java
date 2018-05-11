@@ -11,6 +11,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,9 +76,44 @@ public class MallBookingActivity extends AppCompatActivity {
         showTime = findViewById(R.id.txtView_showTime);
         showSlots = findViewById(R.id.btn_Show_Slots);
 
+
+        mReferenceSlot = FirebaseDatabase.getInstance().getReference().child("Parking Reservation").child("Parking Areas").child(mallKey).child("slots");
         recyclerView = findViewById(R.id.recycler_parking_slots);
         slotArrayList = new ArrayList<>();
         checkAvailabilityArrayList = new ArrayList<>();
+
+
+        DatabaseReference checkSlotReference = FirebaseDatabase.getInstance()
+                .getReference().child("Parking Reservation")
+                .child("Parking Areas").child(mallKey).child("slots");
+
+        checkSlotReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
+                    Log.d("dataSnapShot",dataSnapshot1.getKey());
+                    if (dataSnapshot1.child("bookings").exists()){
+                        for (DataSnapshot data:dataSnapshot1.getChildren()){
+                            Log.d("dataSnapShot",data.getKey());
+                            for (DataSnapshot bookings:data.getChildren()){
+
+                                Log.d("dataSnapShot",bookings.getValue().toString());
+                                CheckAvailability checkAvailabilityObj = bookings.getValue(CheckAvailability.class);
+                                checkAvailabilityArrayList.add(checkAvailabilityObj);
+
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
         timePicker.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +152,7 @@ public class MallBookingActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String userSelectedTime = showTime.getText().toString(); // booking time
-                final  String userSelectedDate = showDate.getText().toString(); // booking date
+                final String userSelectedDate = showDate.getText().toString(); // booking date
                 slotArrayList.clear(); // model class arraylist
 
                 // If the booking time and date are not empty
@@ -148,8 +185,6 @@ public class MallBookingActivity extends AppCompatActivity {
                             recyclerView.setLayoutManager(recyclerViewLayoutManager);
                             recyclerView.setAdapter(parkingAreaAdapter);
 
-                            mReferenceSlot = FirebaseDatabase.getInstance().getReference().child("Parking Reservation")
-                                    .child("Parking Areas").child(mallKey).child("slots");
                             mReferenceSlot.addChildEventListener(new ChildEventListener() {
                                 @Override
                                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
